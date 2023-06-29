@@ -22,4 +22,15 @@ public class CreatorController {
     public Creator createCreator(@RequestBody Creator creator) {
         return creatorRepository.save(creator);
     }
+
+    @PutMapping("/{id}")
+    public Creator updateCreator(@PathVariable String id, @RequestBody Creator creator) {
+        creator.setId(id);
+        return creatorRepository.save(creator);
+    }
+
+    @DeleteMapping("/{id}")
+    public void deleteCreator(@PathVariable String id) {
+        creatorRepository.deleteById(id);
+    }
 }
