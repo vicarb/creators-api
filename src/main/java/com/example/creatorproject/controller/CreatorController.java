@@ -1,10 +1,12 @@
 package com.example.creatorproject.controller;
+
 import com.example.creatorproject.model.Creator;
 import com.example.creatorproject.repository.CreatorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/creators")
@@ -16,6 +18,11 @@ public class CreatorController {
     @GetMapping
     public List<Creator> getAllCreators() {
         return creatorRepository.findAll();
+    }
+
+    @GetMapping("/{id}")
+    public Optional<Creator> getCreatorById(@PathVariable String id) {
+        return creatorRepository.findById(id);
     }
 
     @PostMapping
